@@ -1,0 +1,4 @@
+rootProject.name = 'tabuada_divertida'
+
+include 'backend'
+include 'frontend'
