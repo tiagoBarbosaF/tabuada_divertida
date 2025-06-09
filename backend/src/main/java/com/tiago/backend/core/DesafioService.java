@@ -11,9 +11,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class DesafioService {
 
     public DesafioResponse getDesafio() {
-        Integer randomNum1 = randomDouble();
-        Integer randomNum2 = randomDouble();
+        Integer randomNum1 = randomNumber();
+        Integer randomNum2 = randomNumber();
         String randomOperation = randomOperation();
+
+        if (randomOperation.equals(OperationEnum.DIVIDE.getOperation()) && randomNum2.equals(0))
+            randomNum2 = randomNumber();
+
         return new DesafioResponse(randomNum1, randomOperation, randomNum2,
                 null, null, null);
     }
@@ -38,12 +42,12 @@ public class DesafioService {
         };
     }
 
-    private Integer randomDouble() {
+    private Integer randomNumber() {
         return ThreadLocalRandom.current().nextInt(0, 11);
     }
 
     private String randomOperation() {
         OperationEnum[] values = OperationEnum.values();
-        return values[(int) (Math.random() * values.length)].toString();
+        return values[(int) (Math.random() * values.length)].getOperation();
     }
 }

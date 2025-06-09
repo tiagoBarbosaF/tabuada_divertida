@@ -1,7 +1,11 @@
 <div class="h-screen flex items-center justify-center bg-white font-mono">
   <div class="border border-black rounded-2xl p-12 w-[600px] h-[400px] flex items-center justify-center shadow-lg">
-    <span class="text-6xl font-bold text-center  text-gray-500">
-      7 + 8 = ?
-    </span>
+    @if (desafio) {
+      <span class="text-6xl font-bold text-center  text-gray-500">
+        {{ desafio.num1 }} {{ desafio.operation }} {{ desafio.num2 }} = ?
+      </span>
+    } @else {
+      <span class="text-x1 text-gray-500">Carregando...</span>
+    }
   </div>
 </div>
